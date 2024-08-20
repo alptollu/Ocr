@@ -8,10 +8,12 @@ import android.net.Uri
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.annotation.OptIn
+import androidx.camera.core.AspectRatio
 import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.ImageProxy
+import androidx.camera.view.CameraController
 import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.background
@@ -66,6 +68,12 @@ private fun CameraContent(navController: NavController) {
     var hasScanned by remember { mutableStateOf(false) }
     var showDataOnCamera by remember { mutableStateOf(false) }
 
+    fun onTextUpdated(updatedText: String) {
+        detectedText = updatedText
+        showDataOnCamera = true
+        hasScanned = true
+    }
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -97,14 +105,19 @@ private fun CameraContent(navController: NavController) {
                         implementationMode = PreviewView.ImplementationMode.COMPATIBLE
                         scaleType = PreviewView.ScaleType.FILL_START
                     }.also { previewView ->
-                        previewView.controller = cameraController
-                        cameraController.bindToLifecycle(lifecycleOwner)
+                        startTextRecognition(
+                            context = context,
+                            cameraController = cameraController,
+                            lifecycleOwner = lifecycleOwner,
+                            previewView = previewView,
+                            onDetectedTextUpdated = ::onTextUpdated
+                        )
                     }
                 }
             )
 
 
-            LaunchedEffect(key1 = cameraController) {
+            /*LaunchedEffect(key1 = cameraController) {
                 if (!hasScanned) {
                     delay(1500)
                     startTextRecognition(context, cameraController) { recognizedText ->
@@ -113,7 +126,7 @@ private fun CameraContent(navController: NavController) {
                     hasScanned = true
                     showDataOnCamera = true
                 }
-            }
+            }*/
 
             if (showDataOnCamera) {
                 val dataList = RegexOperations.extractDataFromText(detectedText)
@@ -129,8 +142,8 @@ private fun CameraContent(navController: NavController) {
                     Text("TC Kimlik No: ${RegexOperations.extractTcKimlikNo(dataList)}")
                     Text("Doğum Tarihi: ${RegexOperations.extractDogumTarihi(dataList)}")
                     Text("Son Geçerlilik Tarihi: ${RegexOperations.extractSonGecerlilikTarihi(dataList)}")
-                    Text("İsim: ${RegexOperations.extractIsim(dataList)}")
-                    Text("Soyad: ${RegexOperations.extractSoyad(dataList)}")
+                    //Text("İsim: ${RegexOperations.extractIsim(dataList)}")
+                    //Text("Soyad: ${RegexOperations.extractSoyad(dataList)}")
                 }
 
                 Row(
@@ -165,34 +178,17 @@ private fun CameraContent(navController: NavController) {
 private fun startTextRecognition(
     context: Context,
     cameraController: LifecycleCameraController,
+    lifecycleOwner: LifecycleOwner,
+    previewView: PreviewView,
     onDetectedTextUpdated: (String) -> Unit
 ) {
-    cameraController.takePicture(
+
+    cameraController.imageAnalysisTargetSize = CameraController.OutputSize(AspectRatio.RATIO_16_9)
+    cameraController.setImageAnalysisAnalyzer(
         ContextCompat.getMainExecutor(context),
-        object : ImageCapture.OnImageCapturedCallback() {
-            @OptIn(ExperimentalGetImage::class)
-            @ExperimentalGetImage
-            override fun onCaptureSuccess(imageProxy: ImageProxy) {
-                val image = imageProxy.image
-                if (image != null) {
-                    val inputImage = InputImage.fromMediaImage(image, imageProxy.imageInfo.rotationDegrees)
-                    val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
-                    recognizer.process(inputImage)
-                        .addOnSuccessListener { visionText ->
-                            onDetectedTextUpdated(visionText.text)
-                        }
-                        .addOnFailureListener { e ->
-
-                        }
-                        .addOnCompleteListener {
-                            imageProxy.close()
-                        }
-                }
-            }
-
-            override fun onError(exception: ImageCaptureException) {
-                println("Imagecapture hatası...")
-            }
-        }
+        TextRecognitionAnalyzer(onDetectedTextUpdated = onDetectedTextUpdated)
     )
+
+    cameraController.bindToLifecycle(lifecycleOwner)
+    previewView.controller = cameraController
 }

@@ -38,8 +38,8 @@ fun TextArea(navController: NavController, detectedText: String) {
     var tcKimlikNo by remember { mutableStateOf(RegexOperations.extractTcKimlikNo(dataList)) }
     var dogumTarihi by remember { mutableStateOf(RegexOperations.extractDogumTarihi(dataList)) }
     var sonGecerlilikTarihi by remember { mutableStateOf(RegexOperations.extractSonGecerlilikTarihi(dataList)) }
-    var soyad by remember { mutableStateOf(RegexOperations.extractSoyad(dataList)) }
-    var isim by remember { mutableStateOf(RegexOperations.extractIsim(dataList)) }
+    //var soyad by remember { mutableStateOf(RegexOperations.extractSoyad(dataList)) }
+    //var isim by remember { mutableStateOf(RegexOperations.extractIsim(dataList)) }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -51,8 +51,8 @@ fun TextArea(navController: NavController, detectedText: String) {
         TextField(value = tcKimlikNo, onValueChange = { tcKimlikNo = it }, label = { Text("TC Kimlik No") })
         TextField(value = dogumTarihi, onValueChange = { dogumTarihi = it }, label = { Text("Doğum Tarihi") })
         TextField(value = sonGecerlilikTarihi, onValueChange = { sonGecerlilikTarihi = it }, label = { Text("Son Geçerlilik Tarihi") })
-        TextField(value = isim, onValueChange = { isim = it }, label = { Text("İsim") })
-        TextField(value = soyad, onValueChange = { soyad = it }, label = { Text("Soyadı") })
+        //TextField(value = isim, onValueChange = { isim = it }, label = { Text("İsim") })
+        //TextField(value = soyad, onValueChange = { soyad = it }, label = { Text("Soyadı") })
 
         Button(onClick = { showDialog = true }) {
             Row(verticalAlignment = Alignment.CenterVertically) {
