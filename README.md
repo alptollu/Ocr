@@ -51,11 +51,11 @@ This project was developed as part of an internship, which has recently conclude
 
 Currently, the project utilizes ML Kit's text recognition API to extract data from the entire image. In future versions, I plan to implement the following features:
 
-* **Bounding Box Integration:** Introduce a bounding box or ROI (Region of Interest) feature to guide users in aligning their identity cards for more accurate and efficient data extraction. This will involve displaying a visual overlay on the camera preview, prompting users to position their card within the designated area.
+* **Bounding Box Integration:** Introducing a bounding box or ROI (Region of Interest) feature to guide users in aligning their identity cards for more accurate and efficient data extraction. This will involve displaying a visual overlay on the camera preview, prompting users to position their card within the designated area.
 
-* **Enhanced User Experience:** Improve the overall user experience by providing clearer instructions and visual feedback during the scanning process.
+* **Enhanced User Experience:** Improving the overall user experience by providing clearer instructions and visual feedback during the scanning process.
 
-* **Support for More Document Types:**  Explore the possibility of expanding the project to support other document types, such as passports and driver's licenses.
+* **Support for More Document Types:**  Exploring the possibility of expanding the project to support other document types, such as passports and driver's licenses.
 
 * **Integration with NFC Technology:** Investigating the potential of integrating NFC (Near Field Communication) technology to read data directly from identity cards equipped with NFC chips.
   
