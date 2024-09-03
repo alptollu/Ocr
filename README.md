@@ -8,9 +8,9 @@
 
 ### About This Project
 
-This MRZ parser was created during my internship at Turksat, where I gained valuable experience in developing performant and accurate mobile applications using Kotlin and Jetpack Compose. I focused on building a robust solution for extracting data from MRZ fields, particularly for Turkish identity cards, by optimizing the integration of ML Kit's text recognition API and utilizing regular expressions for precise data extraction and validation.
+This MRZ(Machine Readable Zone)* parser was created during my internship at Turksat, where I gained valuable experience in developing performant and accurate mobile applications using Kotlin and Jetpack Compose. I focused on building a robust solution for extracting data from MRZ fields, particularly for Turkish identity cards, by optimizing the integration of ML Kit's text recognition API and utilizing regular expressions for precise data extraction and validation.
 
-
+*To understand MRZ you can read : https://regulaforensics.com/blog/machine-readable-zone/
 
 ### Installation
 
@@ -22,6 +22,10 @@ To clone the project with the `main-coroutine-scope` branch:
 
 ```bash
 git clone -b main-coroutine-scope https://github.com/alptollu/Ocr.git
+
+
+
+
 
 
 
