@@ -24,6 +24,16 @@ To clone the project with the `main-coroutine-scope` branch:
 git clone -b main-coroutine-scope https://github.com/alptollu/Ocr.git
 ```
 
+### Technologies Used
+
+This project utilizes the following technologies:
+
+* **Kotlin:** The primary programming language used for developing the application.
+* **Jetpack Compose:** A modern and declarative UI toolkit for building native Android user interfaces.
+* **ML Kit Text Recognition API:** A powerful machine learning API from Google for performing text recognition tasks.
+* **Coroutines:** A Kotlin feature for managing asynchronous operations and improving application responsiveness.
+
+
 
 
 
