@@ -1,7 +1,8 @@
 ![OpticCharacter_Recognition](https://github.com/user-attachments/assets/dd0cb043-d6c3-46d6-8082-bf49d7f63f53)
 
 
-https://img.shields.io/github/last-commit/alptollu/Ocr/main-coroutine-scope
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/alptollu/Ocr/main-coroutine-scope)
+
 
 
 
