@@ -11,3 +11,18 @@
 This MRZ parser was created during my internship at Turksat, where I gained valuable experience in developing performant and accurate mobile applications using Kotlin and Jetpack Compose. I focused on building a robust solution for extracting data from MRZ fields, particularly for Turkish identity cards, by optimizing the integration of ML Kit's text recognition API and utilizing regular expressions for precise data extraction and validation.
 
 
+
+### Installation
+
+This project is an Android application and requires Android Studio to build and run.
+
+**Important:** This project is actively maintained on the `main-coroutine-scope` branch. Please use this branch for the latest features and bug fixes.
+
+To clone the project with the `main-coroutine-scope` branch:
+
+```bash
+git clone -b main-coroutine-scope https://github.com/alptollu/Ocr.git
+
+
+
+
