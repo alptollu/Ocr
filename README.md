@@ -33,6 +33,17 @@ This project utilizes the following technologies:
 * **ML Kit Text Recognition API:** A powerful machine learning API from Google for performing text recognition tasks.
 * **Coroutines:** A Kotlin feature for managing asynchronous operations and improving application responsiveness.
 
+### MRZ Data Extraction for Turkish Identity Cards
+
+This project uses ML Kit Text Recognition API to extract the following information from the Machine Readable Zone (MRZ) of Turkish identity cards:
+
+* **Document No (Seri No):** The document number printed on the identity card.
+* **TR Identity No (T.C. Kimlik Numarası):** The Turkish Republic identity number.
+* **Date of Birth (Doğum Tarihi):** The date of birth of the identity card holder.
+* **Valid Until (Geçerlilik Tarihi):** The expiration date of the identity card.
+
+This project is specifically designed to accurately read and process the MRZ data found on Turkish identity cards, ensuring efficient and reliable extraction of the above information.
+
 
 
 
