@@ -22,8 +22,7 @@ To clone the project with the `main-coroutine-scope` branch:
 
 ```bash
 git clone -b main-coroutine-scope https://github.com/alptollu/Ocr.git
-
-.
+```
 
 
 
